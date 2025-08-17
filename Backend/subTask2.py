@@ -18,6 +18,7 @@ subtask_prompt = ChatPromptTemplate.from_template("""
     All the things of task is done by ypur self.
     Break it down into 3-6 sequential subtasks But also take care that each subtask has no other subtask divide it in major subtask.
     Return them as just a simple numbered list no other header or footer content as we only need the task list only.
+    Make sure no other content in the output except the list of subtask.
 """)
 
 # Generate the subtak into array of json so that we can decide further which model is need to call
