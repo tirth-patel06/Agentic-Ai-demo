@@ -13,6 +13,7 @@ model1 = ChatGroq(model="llama3-70b-8192", temperature=0.3)
 
 subtask_prompt = ChatPromptTemplate.from_template("""
     You are a helpful assistant that breaks down tasks into clear subtasks.
+    If there is some big task is in the subtask than convert that one subtask to two or three subtask and remove that big subtask.Also not repeat the same subtask.
     Task: "{query}"
     All the things of task is done by ypur self.
     Break it down into 3-6 sequential subtasks But also take care that each subtask has no other subtask divide it in major subtask.

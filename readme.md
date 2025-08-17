@@ -7,6 +7,12 @@ It takes a high-level task, breaks it into subtasks, maps them into JSON actions
 
 ---
 
+## 🧩 System Flow
+
+![System Flow](Backend/subTask2-Flow.png)
+
+---
+
 ## 🧠 Model Used
 - **LLM**: `llama3-70b-8192` (via **Groq API**)  
 - **LangChain**: prompt templates + JSON output parser  
