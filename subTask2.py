@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 import time
 import random
 import streamlit as st
+import os
+
+os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 
 load_dotenv()
 
@@ -97,4 +100,5 @@ if st.button("Run Agentic Flow"):
             log_box.text("\n".join(logs))
 
     st.success("🎯 All subtasks completed!")
+
     st.json(response2)
