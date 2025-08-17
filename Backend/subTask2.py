@@ -2,6 +2,9 @@ from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from dotenv import load_dotenv
+import time
+import random
+import streamlit as st
 
 load_dotenv()
 
@@ -48,4 +51,50 @@ def process_query(query: str):
 
     return subtasks, response2
 
-print(process_query("Organize a robotics workshop"))
+# --------------------------
+# Extra Simulation Layer (Frontend helper)
+
+def simulate_agent(task: str):
+    """Mock agent that yields progress logs for a subtask."""
+    logs = [
+        f"✦ Agent assigned: {task}",
+        f"      Working on {task}...",
+        f"      {task} completed successfully! ✅\n"
+    ]
+    for log in logs:
+        yield log
+        time.sleep(random.uniform(0.5, 1.2))  # simulate async work
+
+
+def agentic_flow(query: str):
+    """Main pipeline: Query → Subtasks → Logs."""
+    # Reuse already extracted subtasks from backend
+    all_logs = []
+    for task in subtasks:
+        for log in simulate_agent(task):
+            all_logs.append(log)
+            yield log
+    return all_logs
+
+# --------------------------
+# Streamlit Frontend
+
+st.set_page_config(page_title="Agentic Bot Demo", page_icon="🤖", layout="centered")
+
+st.title("🤖 Agentic Assistant Demo")
+st.write("Enter a high-level task and watch agents work on subtasks in real-time.")
+
+user_query = st.text_input("Enter your task:", "Organize a robotics workshop")
+
+if st.button("Run Agentic Flow"):
+    subtasks, response2 = process_query(user_query)   # ✅ single function call
+
+    log_box = st.empty()
+    logs = []
+    for task in subtasks:
+        for log in simulate_agent(task):
+            logs.append(log)
+            log_box.text("\n".join(logs))
+
+    st.success("🎯 All subtasks completed!")
+    st.json(response2)
