@@ -14,6 +14,7 @@ model1 = ChatGroq(model="llama3-70b-8192", temperature=0.3)
 subtask_prompt = ChatPromptTemplate.from_template("""
     You are a helpful assistant that breaks down tasks into clear subtasks.
     Task: "{query}"
+    All the things of task is done by ypur self.
     Break it down into 3-6 sequential subtasks But also take care that each subtask has no other subtask divide it in major subtask.
     Return them as just a simple numbered list no other header or footer content as we only need the task list only.
 """)
@@ -27,7 +28,7 @@ You are an AI that maps subtasks into structured actions for a multi-agent syste
 
 For each subtask below, return a JSON object with:
 - "subtask": original text
-- "action_type": one of [send_mail, book_classroom, generate_poster, arrange_equipment, schedule_meeting, announce_event, execute_task]
+- "action_type": one of [send_mail, book_classroom, generate_poster, arrange_equipment, schedule_meeting, execute_task, generate_form, generate_certificate]
 - "description": short note on how this action would be performed
 
 Also take care the whole output is array of this json no other header or foorter is required just the array of json for each task is in the output
