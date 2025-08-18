@@ -2,9 +2,7 @@ from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from dotenv import load_dotenv
-import time
-import random
-import streamlit as st
+from branch import get_branch
 
 load_dotenv()
 
@@ -40,64 +38,28 @@ Subtasks:
 
 # funtion to use the model and call
 
-def process_query(query: str):
-    """Main backend function: query → subtasks → JSON mapping"""
-    # Step 1: Generate subtasks
+def get_subtasks(query: str):
     chain1 = subtask_prompt | model1
     response1 = chain1.invoke({"query": query})
     lines = response1.content.strip().split("\n")
     subtasks = [l.lstrip("123456.-•*: ").strip() for l in lines if l.strip()]
+    return subtasks
 
-    # Step 2: Generate structured JSON
+def map_subtasks_to_actions(subtasks: list):
     chain2 = map_prompt | model2 | parser
     response2 = chain2.invoke({"subtasks": "\n".join(subtasks)})
-
-    return subtasks, response2
-
-# --------------------------
-# Extra Simulation Layer (Frontend helper)
-
-def simulate_agent(task: str):
-    """Mock agent that yields progress logs for a subtask."""
-    logs = [
-        f"✦ Agent assigned: {task}",
-        f"      Working on {task}...",
-        f"      {task} completed successfully! ✅\n"
-    ]
-    for log in logs:
-        yield log
-        time.sleep(random.uniform(0.5, 1.2))  # simulate async work
+    return response2
 
 
-def agentic_flow(query: str):
-    """Main pipeline: Query → Subtasks → Logs."""
-    # Reuse already extracted subtasks from backend
-    all_logs = []
-    for task in subtasks:
-        for log in simulate_agent(task):
-            all_logs.append(log)
-            yield log
-    return all_logs
+def process_query(query: str):
+    subtasks = get_subtasks(query)   # from earlier fix
+    response2 = map_subtasks_to_actions(subtasks)
 
-# --------------------------
-# Streamlit Frontend
+    branch = get_branch(model1)
 
-st.set_page_config(page_title="Agentic Bot Demo", page_icon="🤖", layout="centered")
-
-st.title("🤖 Agentic Assistant Demo")
-st.write("Enter a high-level task and watch agents work on subtasks in real-time.")
-
-user_query = st.text_input("Enter your task:", "Organize a robotics workshop")
-
-if st.button("Run Agentic Flow"):
-    subtasks, response2 = process_query(user_query)   # ✅ single function call
-
-    log_box = st.empty()
-    logs = []
-    for task in subtasks:
-        for log in simulate_agent(task):
-            logs.append(log)
-            log_box.text("\n".join(logs))
-
-    st.success("🎯 All subtasks completed!")
-    st.json(response2)
+    for task in response2:
+        result = branch.invoke(task)
+        print(f"Action: {task['action_type']}")
+        print(f"Result: {result.content}\n")
+    
+process_query("Organise the robotics club workshop")
