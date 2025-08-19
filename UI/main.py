@@ -3,6 +3,7 @@ from typing import List, Dict, Any
 import streamlit as st
 import sys, os
 
+os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 BACKEND_IMPORT_ERROR = None

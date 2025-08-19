@@ -3,7 +3,10 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from dotenv import load_dotenv
 from .branch import get_branch
+import os
+import streamlit as st
 
+os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 load_dotenv()
 
 # Convert the task into samll subtask
