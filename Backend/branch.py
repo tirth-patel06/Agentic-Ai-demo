@@ -35,6 +35,7 @@ Output:
 
 arrange_equipment_prompt = ChatPromptTemplate.from_template("""
 You are a resource checklist assistant for a college workshop.
+Take care that provide most required and important thing also try to give at max 9 or 10 things.
 Subtask: {subtask}
 
 List the equipment, tools, and resources required for execution in bullet points.
