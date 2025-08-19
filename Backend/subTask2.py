@@ -2,7 +2,7 @@ from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from dotenv import load_dotenv
-from branch import get_branch
+from .branch import get_branch
 
 load_dotenv()
 
