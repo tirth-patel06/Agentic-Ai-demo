@@ -3,7 +3,6 @@ from typing import List, Dict, Any
 import streamlit as st
 import sys, os
 
-os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 BACKEND_IMPORT_ERROR = None
@@ -16,6 +15,10 @@ except Exception as e:
 
 st.set_page_config(page_title="Agentic Club Bot", page_icon="🤖", layout="wide")
 st.title("🤖 Agentic Club Bot — Demo UI")
+
+if BACKEND_IMPORT_ERROR:
+    st.error(f"Backend imports failed:\n\n{BACKEND_IMPORT_ERROR}")
+    st.stop()
 
 ACTION_EMOJI = {
     "send_mail": "✉️",
