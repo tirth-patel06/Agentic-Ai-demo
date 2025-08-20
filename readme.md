@@ -23,7 +23,21 @@ It takes a high-level task, breaks it into subtasks, maps them into JSON actions
 ## ⚡ Features
 - Breaks a high-level task into **3–6 major subtasks**  
 - Converts subtasks into **structured JSON actions** (`subtask`, `action_type`, `description`)  
-- Simulates **agent execution logs** step by step  
+- Routes each action to the correct **specialized agent** (email, booking, poster, form, etc.)
+- Simulates **agent execution logs** (step-by-step, expandable in UI)
+-  Supports **college club–oriented tasks** like:
+
+   - Sending mails
+
+   - Booking classrooms
+
+   - Arranging equipment
+
+   - Designing posters
+
+   - Scheduling meetings
+
+   - Generating forms & certificates
 
 ---
 
@@ -49,4 +63,17 @@ It takes a high-level task, breaks it into subtasks, maps them into JSON actions
 
 ---
 
+AGENTIC-CHATBOT/
+│── Backend/
+│   ├── branch.py       
+│   ├── subTask2.py      
+│   └── subTask2-Flow.png
+│
+│── UI/
+│   └── main.py         
+│
+├── requirements.txt                 
+└──  readme.md      
+
+---
 🔗 **Try the demo here:** [Agentic AI Demo](https://agentic-ai-demo-task2.streamlit.app/)
