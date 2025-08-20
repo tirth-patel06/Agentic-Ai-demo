@@ -62,7 +62,7 @@ It takes a high-level task, breaks it into subtasks, maps them into JSON actions
    - Streamlit updates logs in real-time for a **step-by-step agentic flow**.  
 
 ---
-
+```
 AGENTIC-CHATBOT/
 ├── Backend/
 │   ├── branch.py
@@ -74,6 +74,6 @@ AGENTIC-CHATBOT/
 │
 ├── requirements.txt
 └── README.md    
-
+```
 ---
 🔗 **Try the demo here:** [Agentic AI Demo](https://agentic-ai-demo-tirth-main.streamlit.app/)
