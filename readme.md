@@ -1,6 +1,6 @@
 # 🤖 Agentic Assistant Demo
 
-[![Live Demo](https://img.shields.io/badge/Streamlit-Live%20App-brightgreen?logo=streamlit)](https://agentic-ai-demo-task2.streamlit.app/)
+[![Live Demo](https://img.shields.io/badge/Streamlit-Live%20App-brightgreen?logo=streamlit)](https://agentic-ai-demo-tirth-main.streamlit.app/)
 
 A minimal demo of an **Agentic AI system** built with [Streamlit](https://streamlit.io/), [LangChain](https://www.langchain.com/), and [Groq](https://groq.com/).  
 It takes a high-level task, breaks it into subtasks, maps them into JSON actions, and simulates how agents execute them in real-time.
@@ -64,16 +64,16 @@ It takes a high-level task, breaks it into subtasks, maps them into JSON actions
 ---
 
 AGENTIC-CHATBOT/
-│── Backend/
-│   ├── branch.py       
-│   ├── subTask2.py      
+├── Backend/
+│   ├── branch.py
+│   ├── subTask2.py
 │   └── subTask2-Flow.png
 │
-│── UI/
-│   └── main.py         
+├── UI/
+│   └── main.py
 │
-├── requirements.txt                 
-└──  readme.md      
+├── requirements.txt
+└── README.md    
 
 ---
-🔗 **Try the demo here:** [Agentic AI Demo](https://agentic-ai-demo-task2.streamlit.app/)
+🔗 **Try the demo here:** [Agentic AI Demo](https://agentic-ai-demo-tirth-main.streamlit.app/)
