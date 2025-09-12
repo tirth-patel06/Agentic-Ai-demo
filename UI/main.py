@@ -84,7 +84,7 @@ MOCK_LOGS = {
 }
 
 def groq_model():
-    return ChatGroq(model="llama3-70b-8192", temperature=0)
+    return ChatGroq(model="groq/compound", temperature=0)
 
 query = st.text_input("Enter your query:", "Organise the robotics club workshop")
 

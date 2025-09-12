@@ -10,7 +10,7 @@ os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 load_dotenv()
 
 # Convert the task into samll subtask
-model1 = ChatGroq(model="llama3-70b-8192", temperature=0.3)
+model1 = ChatGroq(model="groq/compound", temperature=0.3)
 
 subtask_prompt = ChatPromptTemplate.from_template("""
     You are a helpful assistant that breaks down tasks into clear subtasks.
@@ -23,7 +23,7 @@ subtask_prompt = ChatPromptTemplate.from_template("""
 """)
 
 # Generate the subtak into array of json so that we can decide further which model is need to call
-model2 = ChatGroq(model="llama3-70b-8192", temperature=0)
+model2 = ChatGroq(model="groq/compound", temperature=0)
 parser = JsonOutputParser()
 
 map_prompt = ChatPromptTemplate.from_template("""
