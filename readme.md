@@ -76,4 +76,4 @@ AGENTIC-CHATBOT/
 └── README.md    
 ```
 ---
-🔗 **Try the demo here:** [Agentic AI Demo]([https://agentic-ai-demo-tirth-main.streamlit.app/](https://agentic-ai-demo-xazqx6ja4lqtxlqrmz27vz.streamlit.app/))
+🔗 **Try the demo here:** [Agentic AI Demo]((https://agentic-ai-demo-xazqx6ja4lqtxlqrmz27vz.streamlit.app/))
