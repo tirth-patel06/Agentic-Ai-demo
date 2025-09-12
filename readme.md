@@ -44,7 +44,7 @@ It takes a high-level task, breaks it into subtasks, maps them into JSON actions
 ## 🔎 Approach
 
 1. **Task Decomposition**  
-   - Used a **prompt with `llama3-70b-8192`** to break down the user query into **clear subtasks**.  
+   - Used a **prompt with `groq/compound`** to break down the user query into **clear subtasks**.  
    - The model was instructed to return only a **numbered list** for clean parsing.  
 
 2. **JSON Mapping**  
@@ -76,4 +76,4 @@ AGENTIC-CHATBOT/
 └── README.md    
 ```
 ---
-🔗 **Try the demo here:** [Agentic AI Demo](https://agentic-ai-demo-tirth-main.streamlit.app/)
+🔗 **Try the demo here:** [Agentic AI Demo]([https://agentic-ai-demo-tirth-main.streamlit.app/](https://agentic-ai-demo-xazqx6ja4lqtxlqrmz27vz.streamlit.app/))
